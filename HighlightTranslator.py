@@ -23,6 +23,7 @@ import tkinter as tk
 import re
 import json
 import sys
+import pinyin
 # root = tk.Tk()
 # print(font.families())
 # tesseract setting
@@ -155,10 +156,11 @@ class MainWindow():
         self.inputbox.insert(tk.END, 'Try to copy/highlight/select/screenshot contents that you want to translate')
         self.inputbox.configure(bg=config["inputbox_color"])
         self.inputbox.bind('<Return>', self.input_press)
-        #resultbox
+        #resultbox //** Pinyin
         self.resultbox = tk.Text((self.root),yscrollcommand=(self.scrollbar.set), height=100, font=("{} {}".format(str(self.font_), str(self.font_size))),fg=config['resultbox_font_color'])
+        print(pinyin.get(self.root))
         self.resultbox.configure(bg=config["resultbox_color"])
-
+    
         self.checkbox_frame.pack()
         self.top_checkbox.pack(fill=(tk.BOTH),expand=True, side=tk.LEFT)
         self.select_checkbox.pack(fill=(tk.BOTH),expand=True, side=tk.LEFT)
